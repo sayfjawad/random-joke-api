@@ -9,11 +9,20 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>core</artifactId>
+  <artifactId>clients</artifactId>
   <modelVersion>4.0.0</modelVersion>
-  <name>core</name>
+  <name>clients</name>
 
   <dependencies>
+    <dependency>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <dependency>
+      <artifactId>generated</artifactId>
+      <groupId>nl.multicode.joke</groupId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <artifactId>junit-jupiter-engine</artifactId>
       <groupId>org.junit.jupiter</groupId>

@@ -4,28 +4,35 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 
-  <artifactId>random-joke-api</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-
+  <modelVersion>4.0.0</modelVersion>
   <parent>
     <artifactId>spring-boot-starter-parent</artifactId>
     <groupId>org.springframework.boot</groupId>
-    <version>3.1.5</version>
+    <version>3.2.4</version>
   </parent>
 
+  <artifactId>random-joke-api</artifactId>
+  <groupId>nl.multicode.joke</groupId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>application</module>
+    <module>core</module>
+    <module>clients</module>
+    <module>generated</module>
+    <module>integration-test</module>
+    <module>services</module>
+  </modules>
+
   <properties>
-
     <assertj-core.version>3.23.1</assertj-core.version>
-
     <!-- Supporting frameworks -->
     <gson.version>2.10.1</gson.version>
-
     <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
     <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
     <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
     <jib-maven-plugin.version>3.9.5</jib-maven-plugin.version>
-
     <!-- Unit testing dependencies versions-->
     <junit-jupiter.version>5.9.2</junit-jupiter.version>
     <junit-platform-surefire-provider.version>${javax.annotation-api.version}
@@ -54,10 +61,10 @@
 
     <sonar.coverage.exclusions>
       **/test/**/*
-      , **/src/nl/multicode/elevenproof/model/**
+      , **/src/nl/multicode/joke/model/**
       , **/src/**/*Dto.java
-      , **/src/nl/multicode/elevenproof/Application.java
-      , **/src/nl/multicode/elevenproof/config/**
+      , **/src/nl/multicode/joke/Application.java
+      , **/src/nl/multicode/joke/config/**
     </sonar.coverage.exclusions>
     <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
     <sonar.host.url>${env.SONAR_URL}</sonar.host.url>
@@ -66,11 +73,12 @@
     <sonar.language>java</sonar.language>
     <sonar.login>${env.SONAR_LOGIN}</sonar.login>
     <sonar.password>${env.SONAR_PASSWORD}</sonar.password>
-    <spring-boot-dependencies.version>3.1.5</spring-boot-dependencies.version>
-    <springdoc-openapi.version>2.0.0</springdoc-openapi.version>
+    <spring-boot-dependencies.version>3.2.4</spring-boot-dependencies.version>
+    <springdoc-openapi.version>2.5.0</springdoc-openapi.version>
     <swagger-annotations.version>2.2.8</swagger-annotations.version>
     <validation-api.version>2.0.1.Final</validation-api.version>
     <rest-assured.version>5.3.2</rest-assured.version>
+    <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
   </properties>
 
   <build>
@@ -323,19 +331,16 @@
         <groupId>org.modelmapper</groupId>
         <version>${modelmapper.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud-dependencies.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
     </dependencies>
   </dependencyManagement>
-  <groupId>nl.multicode.elevenproof</groupId>
-  <modelVersion>4.0.0</modelVersion>
-
-  <modules>
-    <module>core</module>
-    <module>application</module>
-    <module>integration-test</module>
-    <module>services</module>
-    <module>generated</module>
-  </modules>
-
 
 
   <profiles>
@@ -347,7 +352,7 @@
             <configuration>
               <coverageThreshold>${pit.coverageThreshold}</coverageThreshold>
               <excludedClasses>
-                <excludedClass>nl.multicode.elevenproof.config.*</excludedClass>
+                <excludedClass>nl.multicode.joke.config.*</excludedClass>
               </excludedClasses>
               <mutationThreshold>${pit.mutationThreshold}</mutationThreshold>
               <targetClasses>

@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: Jokes API
+  description: API for retrieving jokes
+  version: 1.0.0
+servers:
+  - url: https://v2.jokeapi.dev/joke/Any?type=single&amount=16
+paths:
+  /jokes:
+    get:
+      summary: Get jokes
+      responses:
+        '200':
+          description: A list of jokes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JokesResponse'
+components:
+  schemas:
+    JokesResponse:
+      type: object
+      properties:
+        error:
+          type: boolean
+          description: Indicates if there was an error.
+        amount:
+          type: integer
+          description: The number of jokes returned.
+        jokes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Joke'
+    Joke:
+      type: object
+      properties:
+        category:
+          type: string
+          description: The category of the joke.
+        type:
+          type: string
+          description: The type of joke.
+        joke:
+          type: string
+          description: The joke itself.
+        flags:
+          $ref: '#/components/schemas/Flags'
+        id:
+          type: integer
+          description: The unique ID of the joke.
+        safe:
+          type: boolean
+          description: Indicates if the joke is safe for work.
+        lang:
+          type: string
+          description: The language of the joke.
+    Flags:
+      type: object
+      properties:
+        nsfw:
+          type: boolean
+          description: Indicates if the joke is not safe for work.
+        religious:
+          type: boolean
+          description: Indicates if the joke is religious.
+        political:
+          type: boolean
+          description: Indicates if the joke is political.
+        racist:
+          type: boolean
+          description: Indicates if the joke is racist.
+        sexist:
+          type: boolean
+          description: Indicates if the joke is sexist.
+        explicit:
+          type: boolean
+          description: Indicates if the joke is explicit.

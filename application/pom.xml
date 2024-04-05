@@ -2,8 +2,20 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>random-joke-api</artifactId>
+    <groupId>nl.multicode.joke</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <properties>
+    <!--suppress UnresolvedMavenProperty -->
+    <docker.hub.pass>${env.DOCKER_HUB_PASS}</docker.hub.pass>
+    <!--suppress UnresolvedMavenProperty -->
+    <docker.hub.user>${env.DOCKER_HUB_USER}</docker.hub.user>
+  </properties>
+  <name>application</name>
   <artifactId>application</artifactId>
-
   <build>
     <plugins>
       <plugin>
@@ -16,7 +28,7 @@
           </execution>
         </executions>
         <groupId>org.springframework.boot</groupId>
-        <version>3.1.5</version>
+        <version>3.2.4</version>
       </plugin>
 
       <plugin>
@@ -63,20 +75,20 @@
       <version>5.3.2</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <artifactId>core</artifactId>
-      <groupId>nl.multicode.elevenproof</groupId>
+      <groupId>nl.multicode.joke</groupId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <artifactId>services</artifactId>
-      <groupId>nl.multicode.elevenproof</groupId>
+      <groupId>nl.multicode.joke</groupId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <artifactId>generated</artifactId>
-      <groupId>nl.multicode.elevenproof</groupId>
+      <groupId>nl.multicode.joke</groupId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -105,22 +117,5 @@
       <artifactId>spring-boot-test-autoconfigure</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
-  <modelVersion>4.0.0</modelVersion>
-
-  <name>application</name>
-
-  <parent>
-    <artifactId>random-joke-api</artifactId>
-    <groupId>nl.multicode.elevenproof</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-
-  <properties>
-    <!--suppress UnresolvedMavenProperty -->
-    <docker.hub.pass>${env.DOCKER_HUB_PASS}</docker.hub.pass>
-    <!--suppress UnresolvedMavenProperty -->
-    <docker.hub.user>${env.DOCKER_HUB_USER}</docker.hub.user>
-  </properties>
 </project>

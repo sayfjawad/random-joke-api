@@ -1,25 +1,11 @@
-# elevenproof-api
+# random-joke-api
 
-Opensource Java API for validating and generating numbers that use the ElevenProof (elfproef in
-Dutch) (BSN Burger Service Nummer, Bank Account number, etc...)
+Opensource Java API for fetching random jokes and filtering only an appropriate example
 
-## How the eleven proof works
-
-This example uses the Dutch implementation of the eleven proof for the social security number
-equivalent 'BSN - Burger Service Nummer'.
-
-| BSN number | 0 | 5 | 6 | 7 | 0 | 4 | 0 | 3 | 0 | 5 |
-
-|             | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 |       |     |        |   |
-|-------------|----|----|----|----|----|----|----|----|----|-------|-----|--------|---|
-| Number      | 2  | 5  | 3  | 0  | 4  | 7  | 1  | 4  | 6  |       |     |        |   |
-|             | x  | x  | x  | x  | x  | x  | x  | x  | x  |       |     |        |   |
-| Multipliers | 9  | 8  | 7  | 6  | 5  | 4  | 3  | 2  | -1 |       |     |        |   |
-| result      | 18 | 40 | 21 | 0  | 20 | 28 | 3  | 8  | -6 | Total | 132 | % 11 = | 0 |
 
 #### Application information
 
-Name: elevenproof-api
+Name: andom-joke-api
 Maintainer: Sayf jawad ([sayf@multicode.nl](mailto:sayf@multicode.nl))
 
 #### Requirements
@@ -30,10 +16,6 @@ This project uses:
 Java 17
 Spring Boot 3.x
 Maven
-docker
-kubernetes (k8s) # P.S. docker-desktop has a kubernetes implementation you can use
-helm
-kubectl
 ```
 
 #### Build Application
@@ -128,11 +110,6 @@ test by command line
 # BSN
 
 $ curl -X 'GET' 'http://localhost:8080/api/bsn/generate' -H 'accept: */*'
-$ curl -X 'GET' 'http://localhost:8080/api/bsn/validate/052863785' -H 'accept: */*'
-
-#BANK
-$ curl -X 'GET' 'http://localhost:8080/api/bank/generate' -H 'accept: */*'
-$ curl -X 'GET' 'http://localhost:8080/api/bank/validate/0810660385' -H 'accept: */*'
 
 ```
 

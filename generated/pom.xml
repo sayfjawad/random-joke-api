@@ -2,10 +2,18 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>random-joke-api</artifactId>
+    <groupId>nl.multicode.joke</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
   <artifactId>generated</artifactId>
+  <name>generated</name>
+
   <build>
     <plugins>
-
       <plugin>
         <artifactId>openapi-generator-maven-plugin</artifactId>
         <executions>
@@ -23,20 +31,44 @@
               <generateSupportingFiles>false</generateSupportingFiles>
               <generatorName>spring</generatorName>
               <inputSpec>${project.basedir}/src/main/resources/apispecs/api-specs.yaml</inputSpec>
-              <modelPackage>nl.multicode.elevenproof.openapi.model
+              <modelPackage>nl.multicode.joke.openapi.model
               </modelPackage>
               <output>${project.basedir}/target/generated-sources/</output>
             </configuration>
             <goals>
               <goal>generate</goal>
             </goals>
-            <id>cpo_codegen</id>
+            <id>rest_codegen</id>
+          </execution>
+          <execution>
+            <configuration>
+              <configOptions>
+                <additionalModelTypeAnnotations>@lombok.Builder @lombok.NoArgsConstructor
+                  @lombok.AllArgsConstructor
+                </additionalModelTypeAnnotations>
+                <dateLibrary>java8-localdatetime</dateLibrary>
+                <sourceFolder>src/gen/java/main</sourceFolder>
+              </configOptions>
+              <generateApis>false</generateApis>
+              <generateModelDocumentation>false</generateModelDocumentation>
+              <generateSupportingFiles>false</generateSupportingFiles>
+              <generatorName>spring</generatorName>
+              <inputSpec>
+                ${project.basedir}/src/main/resources/apispecs/external-joke-api-specs.yaml
+              </inputSpec>
+              <modelPackage>dev.jokeapi.v2.openapi.model
+              </modelPackage>
+              <output>${project.basedir}/target/generated-sources/</output>
+            </configuration>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <id>external_joke_codegen</id>
           </execution>
         </executions>
         <groupId>org.openapitools</groupId>
         <version>6.5.0</version>
       </plugin>
-
     </plugins>
   </build>
 
@@ -66,13 +98,4 @@
       <groupId>javax.validation</groupId>
     </dependency>
   </dependencies>
-  <modelVersion>4.0.0</modelVersion>
-
-  <name>generated</name>
-
-  <parent>
-    <artifactId>random-joke-api</artifactId>
-    <groupId>nl.multicode.elevenproof</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
 </project>
