@@ -1,0 +1,41 @@
+name: Build and Push to GHCR
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check Out Repo
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build and execute pitest
+        run: mvn -B package -Ppitest
+
+      - name: Upload to SonarQube
+        run: mvn -B package sonar:sonar
+        env:
+          SONAR_URL: ${{ secrets.SONAR_URL }}
+          SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PASSWORD: ${{ secrets.SONAR_PASSWORD }}
+
+      - name: Build and Push Docker Image with Jib
+        run: |
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/elevenproof-rest-api:${{ github.sha }}
+          mvn -B package jib:build -Djib.to.image=$IMAGE_ID -Djib.to.auth.username=${{ github.actor }} -Djib.to.auth.password=${{ secrets.GITHUB_TOKEN }}
