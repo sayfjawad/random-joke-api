@@ -1,7 +1,7 @@
 package nl.multicode.joke.glue.stepdefinition;
 
 import static io.restassured.RestAssured.given;
-import static nl.multicode.joke.driver.util.Constants.ELEVENPROOF_REST_API_ENDPOINT;
+import static nl.multicode.joke.driver.util.Constants.ENDPOINT_URI;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
@@ -14,7 +14,6 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import java.util.HashMap;
 import java.util.Map;
-import lombok.SneakyThrows;
 
 import org.apache.http.HttpStatus;
 
@@ -42,14 +41,14 @@ public class StepDefinitions {
     public void anExampleScenario() {
 
         final var response = given().get(
-                ELEVENPROOF_REST_API_ENDPOINT.resolve("/api/swagger-ui/index.html"));
+                ENDPOINT_URI.resolve("/api/swagger-ui/index.html"));
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SC_OK);
     }
 
     @When("^endpoint (.*) is called$")
     public void callEndpointStepDefinition(String endpoint) {
 
-        final var response = given().get(ELEVENPROOF_REST_API_ENDPOINT.resolve(endpoint));
+        final var response = given().get(ENDPOINT_URI.resolve(endpoint));
         context.put("response", response);
     }
 
