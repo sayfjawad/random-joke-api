@@ -259,6 +259,12 @@
         <version>${rest-assured-all.version}</version>
       </dependency>
       <dependency>
+        <artifactId>rest-assured</artifactId>
+        <groupId>io.rest-assured</groupId>
+        <scope>test</scope>
+        <version>${rest-assured-all.version}</version>
+      </dependency>
+      <dependency>
         <artifactId>maven-assembly-plugin</artifactId>
         <groupId>org.apache.maven.plugins</groupId>
         <version>${maven-assembly-plugin.version}</version>
