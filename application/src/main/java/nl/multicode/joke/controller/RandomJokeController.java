@@ -21,7 +21,7 @@ public class RandomJokeController implements JokeController<ResponseEntity<Rando
     private final ModelMapper modelMapper;
 
     @GetMapping("/fetch")
-    public ResponseEntity<RandomJoke> fetch() {
+    public ResponseEntity<RandomJoke> getRandomJoke() {
 
         return service.fetch()
                 .map(jokeDto -> ResponseEntity.ok(modelMapper.map(jokeDto, RandomJoke.class)))

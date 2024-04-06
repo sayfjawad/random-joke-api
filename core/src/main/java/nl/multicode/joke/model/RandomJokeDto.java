@@ -11,11 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RandomJokeDto {
 
+    //Only applicable flags are mapped
     private Integer id;
-    private String category;
-    private String type;
     private boolean safe;
     private String joke;
     private FlagsDto flags;
-    private String lang;
 }
