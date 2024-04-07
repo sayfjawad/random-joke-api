@@ -3,16 +3,7 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
   <artifactId>services</artifactId>
-  <name>services</name>
-
-  <parent>
-    <artifactId>random-joke-api</artifactId>
-    <groupId>nl.multicode.joke</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-
   <dependencies>
     <dependency>
       <artifactId>core</artifactId>
@@ -25,9 +16,18 @@
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
-      <groupId>org.modelmapper</groupId>
       <artifactId>modelmapper</artifactId>
+      <groupId>org.modelmapper</groupId>
       <version>3.2.0</version>
     </dependency>
   </dependencies>
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>services</name>
+
+  <parent>
+    <artifactId>random-joke-api</artifactId>
+    <groupId>nl.multicode.joke</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
 </project>

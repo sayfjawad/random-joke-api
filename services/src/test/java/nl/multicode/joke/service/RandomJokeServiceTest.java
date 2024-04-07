@@ -11,7 +11,6 @@ import dev.jokeapi.v2.openapi.model.Joke;
 import dev.jokeapi.v2.openapi.model.JokesResponse;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Predicate;
 import nl.multicode.joke.client.ExternalJokeClient;
 import nl.multicode.joke.compare.ShortestJokeComparator;

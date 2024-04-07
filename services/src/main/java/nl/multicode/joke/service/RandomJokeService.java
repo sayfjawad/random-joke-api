@@ -1,6 +1,5 @@
 package nl.multicode.joke.service;
 
-import dev.jokeapi.v2.openapi.model.JokesResponse;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;

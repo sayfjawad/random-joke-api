@@ -4,7 +4,7 @@ import dev.jokeapi.v2.openapi.model.JokesResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "example", url = "https://v2.jokeapi.dev")
+@FeignClient(name = "jokesClient", url = "${jokeapi.url}")
 public interface ExternalJokeClient {
 
     @GetMapping("/joke/Any?type=single&amount=16")
