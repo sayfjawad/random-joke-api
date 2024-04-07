@@ -20,7 +20,6 @@
     </plugins>
   </build>
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
     <dependency>
       <artifactId>rest-assured</artifactId>
       <groupId>io.rest-assured</groupId>
@@ -90,9 +89,7 @@
   </parent>
 
   <properties>
-    <!--suppress UnresolvedMavenProperty -->
     <docker.hub.pass>${env.DOCKER_HUB_PASS}</docker.hub.pass>
-    <!--suppress UnresolvedMavenProperty -->
     <docker.hub.user>${env.DOCKER_HUB_USER}</docker.hub.user>
   </properties>
 </project>
