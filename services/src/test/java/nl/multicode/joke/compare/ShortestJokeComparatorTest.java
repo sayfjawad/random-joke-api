@@ -6,7 +6,7 @@ import nl.multicode.joke.model.RandomJokeDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ShortestJokeComparatorTest {
+class ShortestJokeComparatorTest {
 
     private final ShortestJokeComparator comparator = new ShortestJokeComparator();
 
@@ -14,7 +14,7 @@ public class ShortestJokeComparatorTest {
     @DisplayName("Given two jokes with different lengths, "
             + "when comparing them, "
             + "then the comparator should return a negative value if the first joke is shorter.")
-    public void testCompare_whenFirstJokeIsShorter_thenNegativeValue() {
+    void testCompare_whenFirstJokeIsShorter_thenNegativeValue() {
         // Given
         final var joke1 = new RandomJokeDto();
         joke1.setJoke("Short joke");
@@ -32,7 +32,7 @@ public class ShortestJokeComparatorTest {
     @DisplayName("Given two jokes with different lengths, "
             + "when comparing them, "
             + "then the comparator should return a positive value if the first joke is longer.")
-    public void testCompare_whenFirstJokeIsLonger_thenPositiveValue() {
+    void testCompare_whenFirstJokeIsLonger_thenPositiveValue() {
         // Given
         final var longerJoke = RandomJokeDto.builder()
                 .joke("Longer joke")
@@ -52,7 +52,7 @@ public class ShortestJokeComparatorTest {
     @DisplayName("Given two jokes with the same length, "
             + "when comparing them, "
             + "then the comparator should return zero.")
-    public void testCompare_whenJokesHaveSameLength_thenZero() {
+    void testCompare_whenJokesHaveSameLength_thenZero() {
         // Given
         final var joke1 = RandomJokeDto.builder()
                 .joke("Equal length joke")

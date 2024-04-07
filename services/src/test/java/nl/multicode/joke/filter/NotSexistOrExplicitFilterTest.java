@@ -7,7 +7,7 @@ import nl.multicode.joke.model.RandomJokeDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class NotSexistOrExplicitFilterTest {
+class NotSexistOrExplicitFilterTest {
 
     private final NotExplicitJokeFilter filter = new NotExplicitJokeFilter();
 
@@ -15,7 +15,7 @@ public class NotSexistOrExplicitFilterTest {
     @DisplayName("Given a joke that is not explicit, "
             + "when testing the filter, "
             + "then the filter should return true.")
-    public void testTest_whenNotSexistOrExplicit_thenReturnTrue() {
+    void testTest_whenNotSexistOrExplicit_thenReturnTrue() {
         // Given
         final var randomJokeDto = new RandomJokeDto();
         randomJokeDto.setFlags(FlagsDto.builder().build());
@@ -31,7 +31,7 @@ public class NotSexistOrExplicitFilterTest {
     @DisplayName("Given a joke that is explicit, "
             + "when testing the filter, "
             + "then the filter should return false.")
-    public void testTest_whenExplicit_thenReturnFalse() {
+    void testTest_whenExplicit_thenReturnFalse() {
         // Given
         final var randomJokeDto = new RandomJokeDto();
         randomJokeDto.setFlags(FlagsDto.builder().explicit(true).build());
@@ -47,7 +47,7 @@ public class NotSexistOrExplicitFilterTest {
     @DisplayName("Given a joke that is both sexist and explicit, "
             + "when testing the filter, "
             + "then the filter should return false.")
-    public void testTest_whenSexistAndExplicit_thenReturnFalse() {
+    void testTest_whenSexistAndExplicit_thenReturnFalse() {
         // Given
         final var randomJokeDto = new RandomJokeDto();
         randomJokeDto.setFlags(FlagsDto.builder()

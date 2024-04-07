@@ -6,7 +6,7 @@ import nl.multicode.joke.model.RandomJokeDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class SafeJokeFilterTest {
+class SafeJokeFilterTest {
 
     private final SafeJokeFilter filter = new SafeJokeFilter();
 
@@ -14,7 +14,7 @@ public class SafeJokeFilterTest {
     @DisplayName("Given a safe joke, "
             + "when testing the filter, "
             + "then the filter should return true.")
-    public void testTest_whenSafeJoke_thenReturnTrue() {
+    void testTest_whenSafeJoke_thenReturnTrue() {
         // Given
         RandomJokeDto randomJokeDto = new RandomJokeDto();
         randomJokeDto.setSafe(true);
@@ -30,7 +30,7 @@ public class SafeJokeFilterTest {
     @DisplayName("Given a non-safe joke, "
             + "when testing the filter, "
             + "then the filter should return false.")
-    public void testTest_whenNonSafeJoke_thenReturnFalse() {
+    void testTest_whenNonSafeJoke_thenReturnFalse() {
         // Given
         RandomJokeDto randomJokeDto = new RandomJokeDto();
         randomJokeDto.setSafe(false);

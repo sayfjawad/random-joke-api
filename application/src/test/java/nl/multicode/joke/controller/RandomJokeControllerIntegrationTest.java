@@ -25,7 +25,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {WireMockConfig.class})
-public class RandomJokeControllerIntegrationTest {
+class RandomJokeControllerIntegrationTest {
 
     @Autowired
     private RandomJokeController controller;
@@ -101,7 +101,7 @@ public class RandomJokeControllerIntegrationTest {
     }
 
     @Test
-    public void testFeignClientWithWireMock() {
+    void testFeignClientWithWireMock() {
 
         final var response = controller.getRandomJoke();
         final var joke = Objects.requireNonNull(response.getBody()).getJoke();

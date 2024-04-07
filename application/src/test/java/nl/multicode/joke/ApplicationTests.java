@@ -11,6 +11,7 @@ class ApplicationTests {
     @Autowired
     ApplicationContext context;
 
+    @SuppressWarnings("java:S2699")
     @Test
     void contextLoads() {
 

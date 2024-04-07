@@ -41,7 +41,7 @@ public class JokeToRandomJokeDtoMapperTest {
         final var result = mapper.apply(joke);
 
         // Then
-        assertThat(result).isNotNull();
-        assertThat(result).isEqualTo(expectedDto);
+        assertThat(result).isNotNull()
+                .isEqualTo(expectedDto);
     }
 }

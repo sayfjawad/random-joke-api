@@ -24,7 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {WireMockConfig.class})
-public class ExternalClientIntegrationTest {
+class ExternalClientIntegrationTest {
 
     @Autowired
     private ExternalJokeClient client;
@@ -214,7 +214,7 @@ public class ExternalClientIntegrationTest {
     }
 
     @Test
-    public void testFeignClientWithWireMock() {
+    void testFeignClientWithWireMock() {
         // Configure WireMock stubs here
         // Call your Feign client method here and assert the results
         final var response = client.fetchJokes();
