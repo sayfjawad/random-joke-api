@@ -1,6 +1,8 @@
 package nl.multicode.joke.controller;
 
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import lombok.RequiredArgsConstructor;
 import nl.multicode.joke.model.RandomJokeDto;
 import nl.multicode.joke.openapi.model.RandomJoke;
@@ -20,11 +22,21 @@ public class RandomJokeController implements JokeController<ResponseEntity<Rando
     private final JokeService<Optional<RandomJokeDto>> service;
     private final ModelMapper modelMapper;
 
+    private static Supplier<ResponseEntity<RandomJoke>> getNotFoundResponseEntity() {
+
+        return () -> ResponseEntity.notFound().build();
+    }
+
     @GetMapping("/fetch")
     public ResponseEntity<RandomJoke> getRandomJoke() {
 
         return service.fetch()
-                .map(jokeDto -> ResponseEntity.ok(modelMapper.map(jokeDto, RandomJoke.class)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
+                .map(mapJokeDtoToResponseEntity())
+                .orElseGet(getNotFoundResponseEntity());
+    }
+
+    private Function<RandomJokeDto, ResponseEntity<RandomJoke>> mapJokeDtoToResponseEntity() {
+
+        return jokeDto -> ResponseEntity.ok(modelMapper.map(jokeDto, RandomJoke.class));
     }
 }

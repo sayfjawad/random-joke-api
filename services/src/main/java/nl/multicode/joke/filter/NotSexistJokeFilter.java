@@ -5,11 +5,11 @@ import nl.multicode.joke.model.RandomJokeDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SafeFilter implements Predicate<RandomJokeDto> {
+public class NotSexistJokeFilter implements Predicate<RandomJokeDto> {
 
     @Override
     public boolean test(final RandomJokeDto randomJokeDto) {
 
-        return randomJokeDto.isSafe();
+        return !randomJokeDto.getFlags().isSexist();
     }
 }

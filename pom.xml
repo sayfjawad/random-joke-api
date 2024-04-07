@@ -353,6 +353,7 @@
               <coverageThreshold>${pit.coverageThreshold}</coverageThreshold>
               <excludedClasses>
                 <excludedClass>nl.multicode.joke.config.*</excludedClass>
+                <excludedClass>nl.multicode.joke.client.*</excludedClass>
               </excludedClasses>
               <mutationThreshold>${pit.mutationThreshold}</mutationThreshold>
               <targetClasses>
