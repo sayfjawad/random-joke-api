@@ -27,7 +27,7 @@ mvn clean package
 ## Mutation testing
 
 ``` 
-$ mvn clean install -Pintegration-test
+$ mvn clean install -Ppitest
 ```
 
 #### Application usage

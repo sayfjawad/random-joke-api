@@ -154,14 +154,6 @@
         <scope>test</scope>
         <version>${junit-jupiter.version}</version>
       </dependency>
-      <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
-      <dependency>
-        <artifactId>rest-assured</artifactId>
-        <groupId>io.rest-assured</groupId>
-        <scope>test</scope>
-        <version>${rest-assured.version}</version>
-      </dependency>
-
       <dependency>
         <artifactId>cucumber-bom</artifactId>
         <groupId>io.cucumber</groupId>
@@ -175,18 +167,6 @@
         <scope>import</scope>
         <type>pom</type>
         <version>${junit-jupiter.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>rest-assured-all</artifactId>
-        <groupId>io.rest-assured</groupId>
-        <scope>test</scope>
-        <version>${rest-assured-all.version}</version>
-      </dependency>
-      <dependency>
-        <artifactId>rest-assured</artifactId>
-        <groupId>io.rest-assured</groupId>
-        <scope>test</scope>
-        <version>${rest-assured-all.version}</version>
       </dependency>
       <dependency>
         <artifactId>maven-assembly-plugin</artifactId>
@@ -282,7 +262,6 @@
     <module>core</module>
     <module>clients</module>
     <module>generated</module>
-    <module>integration-test</module>
     <module>services</module>
   </modules>
 
@@ -382,9 +361,6 @@
     <!-- If you want to connect to a sonarqube server then configure the parameters below in your environment variables -->
     <pitest-maven.version>1.11.7</pitest-maven.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <rest-assured-all.version>5.3.0</rest-assured-all.version>
-
-    <rest-assured.version>5.3.2</rest-assured.version>
     <sonar.coverage.exclusions>
       **/test/**/*
       , **/src/nl/multicode/joke/model/**
