@@ -5,6 +5,9 @@ spring:
   cloud:
     compatibility-verifier:
       enabled: false
+management:
+  endpoints:
+    enabled-by-default: false
 
 springdoc:
   api-docs:
