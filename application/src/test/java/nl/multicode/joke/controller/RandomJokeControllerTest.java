@@ -32,40 +32,46 @@ public class RandomJokeControllerTest {
     private RandomJokeController randomJokeController;
 
     @Test
-    @DisplayName("Given a request to fetch a random joke is made, "
-            + "when the joke service returns a joke, "
-            + "then the controller should return an OK response with the joke.")
+    @DisplayName("When a request to fetch a random joke is made and the joke service returns a joke, then the controller should return an OK response with the joke.")
     public void testGetRandomJoke_whenJokeServiceReturnsJoke_thenReturnOkResponse() {
-
+        // Given
         RandomJokeDto jokeDto = new RandomJokeDto();
         when(jokeService.fetch()).thenReturn(Optional.of(jokeDto));
         RandomJoke randomJoke = new RandomJoke();
         when(modelMapper.map(jokeDto, RandomJoke.class)).thenReturn(randomJoke);
+
+        // When
         ResponseEntity<RandomJoke> response = randomJokeController.getRandomJoke();
+
+        // Then
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isEqualTo(randomJoke);
     }
 
     @Test
-    @DisplayName("Given a request to fetch a random joke is made, "
-            + "when the joke service returns empty, "
-            + "then the controller should return a Not Found response.")
+    @DisplayName("When a request to fetch a random joke is made and the joke service returns empty, then the controller should return a Not Found response.")
     public void testGetRandomJoke_whenJokeServiceReturnsEmpty_thenReturnNotFoundResponse() {
-
+        // Given
         when(jokeService.fetch()).thenReturn(Optional.empty());
+
+        // When
         ResponseEntity<RandomJoke> response = randomJokeController.getRandomJoke();
+
+        // Then
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         assertThat(response.getBody()).isNull();
     }
 
     @Test
-    @DisplayName("Given a request to fetch a random joke is made, "
-            + "when the joke service returns empty, "
-            + "then the service should be called.")
+    @DisplayName("When a request to fetch a random joke is made and the joke service returns empty, then the service should be called.")
     public void testGetRandomJoke_whenJokeServiceReturnsEmpty_thenServiceShouldBeCalled() {
-
+        // Given
         when(jokeService.fetch()).thenReturn(Optional.empty());
+
+        // When
         randomJokeController.getRandomJoke();
+
+        // Then
         verify(jokeService, times(1)).fetch();
     }
 }

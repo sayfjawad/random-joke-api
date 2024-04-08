@@ -16,10 +16,8 @@ class ShortestJokeComparatorTest {
             + "then the comparator should return a negative value if the first joke is shorter.")
     void testCompare_whenFirstJokeIsShorter_thenNegativeValue() {
         // Given
-        final var joke1 = new RandomJokeDto();
-        joke1.setJoke("Short joke");
-        final var joke2 = new RandomJokeDto();
-        joke2.setJoke("Longer joke");
+        final var joke1 = RandomJokeDto.builder().joke("Short joke").build();
+        final var joke2 = RandomJokeDto.builder().joke("Longer joke").build();
 
         // When
         int result = comparator.compare(joke1, joke2);

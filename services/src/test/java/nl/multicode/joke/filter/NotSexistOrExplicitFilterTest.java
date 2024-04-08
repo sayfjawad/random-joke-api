@@ -17,7 +17,7 @@ class NotSexistOrExplicitFilterTest {
             + "then the filter should return true.")
     void testTest_whenNotSexistOrExplicit_thenReturnTrue() {
         // Given
-        final var randomJokeDto = new RandomJokeDto();
+        final var randomJokeDto = RandomJokeDto.builder().build();
         randomJokeDto.setFlags(FlagsDto.builder().build());
 
         // When
@@ -33,8 +33,9 @@ class NotSexistOrExplicitFilterTest {
             + "then the filter should return false.")
     void testTest_whenExplicit_thenReturnFalse() {
         // Given
-        final var randomJokeDto = new RandomJokeDto();
-        randomJokeDto.setFlags(FlagsDto.builder().explicit(true).build());
+        final var randomJokeDto = RandomJokeDto.builder()
+                .flags(FlagsDto.builder().explicit(true).build())
+                .build();
 
         // When
         final var result = filter.test(randomJokeDto);

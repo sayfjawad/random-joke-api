@@ -13,4 +13,4 @@ springdoc:
     path: /api/swagger-ui.html
 
 jokeapi:
-  url: https://v2.jokeapi.devs
+  url: https://v2.jokeapi.dev

@@ -18,6 +18,7 @@ public class JokeToRandomJokeDtoMapperTest {
 
     @Mock
     private ModelMapper modelMapperMock;
+
     @InjectMocks
     private JokeToRandomJokeDtoMapper mapper;
 

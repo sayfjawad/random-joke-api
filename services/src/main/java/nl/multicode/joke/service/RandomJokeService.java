@@ -17,8 +17,11 @@ import org.springframework.stereotype.Service;
 public class RandomJokeService implements JokeService<Optional<RandomJokeDto>> {
 
     private final ExternalJokeClient jokeClient;
+
     private final JokeToRandomJokeDtoMapper randomJokeDtoMapper;
+
     private final List<Predicate<RandomJokeDto>> passJokeThroughFilters;
+
     private final ShortestJokeComparator shortestJokeComparator;
 
 
@@ -30,7 +33,8 @@ public class RandomJokeService implements JokeService<Optional<RandomJokeDto>> {
 
         return jokesResponse.getJokes().stream()
                 .map(randomJokeDtoMapper)
-                .filter(joke -> passJokeThroughFilters.stream().allMatch(filter -> filter.test(joke)))
+                .filter(joke -> passJokeThroughFilters.stream()
+                        .allMatch(filter -> filter.test(joke)))
                 .min(shortestJokeComparator);
     }
 }

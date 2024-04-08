@@ -16,8 +16,9 @@ class SafeJokeFilterTest {
             + "then the filter should return true.")
     void testTest_whenSafeJoke_thenReturnTrue() {
         // Given
-        RandomJokeDto randomJokeDto = new RandomJokeDto();
-        randomJokeDto.setSafe(true);
+        final var randomJokeDto = RandomJokeDto.builder()
+                .safe(true)
+                .build();
 
         // When
         boolean result = filter.test(randomJokeDto);
@@ -32,7 +33,7 @@ class SafeJokeFilterTest {
             + "then the filter should return false.")
     void testTest_whenNonSafeJoke_thenReturnFalse() {
         // Given
-        RandomJokeDto randomJokeDto = new RandomJokeDto();
+        final var randomJokeDto = new RandomJokeDto();
         randomJokeDto.setSafe(false);
 
         // When

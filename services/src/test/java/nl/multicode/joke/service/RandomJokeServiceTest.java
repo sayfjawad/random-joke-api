@@ -20,6 +20,7 @@ import nl.multicode.joke.model.FlagsDto;
 import nl.multicode.joke.model.RandomJokeDto;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -39,7 +40,9 @@ public class RandomJokeServiceTest {
 
     @Mock
     private SafeJokeFilter safeJokeFilter;
+
     private List<Predicate<RandomJokeDto>> passJokeThroughFilters;
+
     @InjectMocks
     private RandomJokeService randomJokeService;
 
@@ -50,6 +53,9 @@ public class RandomJokeServiceTest {
     }
 
     @Test
+    @DisplayName("Given jokes are fetched from external client, "
+            + "when filtering jokes for safety and length, "
+            + "then return the shortest safe joke")
     public void testFetch_whenJokesAreFiltered_returnShortestNonFilteredJoke() {
         // Given
         final var longJoke = Joke.builder()
@@ -86,7 +92,8 @@ public class RandomJokeServiceTest {
         when(randomJokeDtoMapper.apply(sexistJoke)).thenReturn(sexistJokeDto);
         when(randomJokeDtoMapper.apply(longJoke)).thenReturn(longJokeDto);
         when(randomJokeDtoMapper.apply(shortJoke)).thenReturn(shortJokeDto);
-        when(shortestJokeComparator.compare(longJokeDto, shortJokeDto)).thenReturn(1); // joke2 is shorter
+        when(shortestJokeComparator.compare(longJokeDto, shortJokeDto)).thenReturn(
+                1); // joke2 is shorter
         when(safeJokeFilter.test(longJokeDto)).thenReturn(true);
         when(safeJokeFilter.test(shortJokeDto)).thenReturn(true);
         randomJokeService = new RandomJokeService(jokeClient,

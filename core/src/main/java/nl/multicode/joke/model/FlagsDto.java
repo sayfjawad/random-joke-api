@@ -13,5 +13,6 @@ public class FlagsDto {
 
     //Only applicable flags are mapped
     private boolean sexist;
+
     private boolean explicit;
 }

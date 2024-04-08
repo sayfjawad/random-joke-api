@@ -2,7 +2,6 @@ package nl.multicode.joke.controller;
 
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import lombok.RequiredArgsConstructor;
 import nl.multicode.joke.model.RandomJokeDto;
 import nl.multicode.joke.openapi.model.RandomJoke;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RandomJokeController implements JokeController<ResponseEntity<RandomJoke>> {
 
     private final JokeService<Optional<RandomJokeDto>> service;
+
     private final ModelMapper modelMapper;
 
     @GetMapping("/fetch")

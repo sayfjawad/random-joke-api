@@ -13,7 +13,10 @@ public class RandomJokeDto {
 
     //Only applicable flags are mapped
     private Integer id;
+
     private boolean safe;
+
     private String joke;
+
     private FlagsDto flags;
 }

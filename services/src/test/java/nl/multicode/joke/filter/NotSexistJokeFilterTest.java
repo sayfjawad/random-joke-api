@@ -52,11 +52,12 @@ class NotSexistJokeFilterTest {
             + "then the filter should return false.")
     void testTest_whenSexistAndExplicit_thenReturnFalse() {
         // Given
-        final var randomJokeDto = new RandomJokeDto();
-        randomJokeDto.setFlags(FlagsDto.builder()
-                .sexist(true)
-                .explicit(true)
-                .build());
+        final var randomJokeDto = RandomJokeDto.builder()
+                .flags(FlagsDto.builder()
+                        .sexist(true)
+                        .explicit(true)
+                        .build())
+                .build();
 
         // When
         final var result = filter.test(randomJokeDto);
