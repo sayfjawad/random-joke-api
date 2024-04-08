@@ -22,17 +22,12 @@ public class RandomJokeController implements JokeController<ResponseEntity<Rando
     private final JokeService<Optional<RandomJokeDto>> service;
     private final ModelMapper modelMapper;
 
-    private static Supplier<ResponseEntity<RandomJoke>> getNotFoundResponseEntity() {
-
-        return () -> ResponseEntity.notFound().build();
-    }
-
     @GetMapping("/fetch")
     public ResponseEntity<RandomJoke> getRandomJoke() {
 
         return service.fetch()
                 .map(mapJokeDtoToResponseEntity())
-                .orElseGet(getNotFoundResponseEntity());
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     private Function<RandomJokeDto, ResponseEntity<RandomJoke>> mapJokeDtoToResponseEntity() {
